@@ -6,6 +6,7 @@ $ create-react-app my-app
 $ cd my-app/
 $ npm start
 ```
+效果图：
 ![](效果图/1.png)
 
 
