@@ -6,7 +6,7 @@ $ create-react-app my-app
 $ cd my-app/
 $ npm start
 ```
-![](https://www.runoob.com/wp-content/uploads/2016/02/0FBC219D-EFF6-4F0D-BB9D-2A97BD177770.jpg)
+![](效果图/1.png)
 
 
 # 参考学习链接
