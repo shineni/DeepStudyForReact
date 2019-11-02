@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+</head>
+<body>
+    <div id="example1"></div>
+    <div id="example2"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //1.定义组件
+        //方式1：工厂函数组件(简单组件)
+        function MyComponent(){
+            return <h2>工厂函数组件(简单组件)</h2>
+        }
+
+        //方式2：ES6类组件(复杂组件)
+        class MyComponent2 extends React.Component{
+            render(){
+                return <h2>ES6类组件(复杂组件)</h2>
+            }
+        }
+        ReactDOM.render(<MyComponent />,document.getElementById('example1'))
+        ReactDOM.render(<MyComponent2 />,document.getElementById('example2'))
+    </script>
+</body>
+</html>
