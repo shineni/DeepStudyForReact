@@ -55,6 +55,20 @@ npm start
 * state是组件对象最重要的属性，值是对象(可以包含多个数据)
 * 组件被称为“状态机”，通过更新组件的state来更新对象页面显示(重新渲染组件)
 * 有状态就不能用简单组件方式，函数方式效率更高，不需要创建对象
+
+        1. 组件被称为"状态机", 页面的显示是根据组件的state属性的数据来显示
+        2. 初始化指定:
+            constructor() {
+              super()
+              this.state = {
+                stateName1 : stateValue1,
+                stateName2 : stateValue2
+              }
+            }
+        3. 读取显示: 
+            this.state.stateName1
+        4. 更新状态-->更新界面 : 
+            this.setState({stateName1 : newValue})
 #### 2.props
 * 默认属性值
 Person.defaultProps={
@@ -66,7 +80,25 @@ Person.propTypes={
 	name:React.PropTypes.string.isRequired,
     age:React.PropTypes.number.isRequired
 }
+
+        所有组件标签的属性的集合对象
+        给标签指定属性, 保存外部数据(可能是一个function)
+        在组件内部读取属性: this.props.propertyName
+        作用: 从目标组件外部向组件内部传递数据
+        对props中的属性值进行类型限制和必要性限制
+            Person.propTypes = {
+                name: React.PropTypes.string.isRequired,
+                age: React.PropTypes.number.isRequired
+            }
+        扩展属性: 将对象的所有属性通过props传递
+            <Person {...person}/>
+
 #### 3.refs
+* 用来表识组件内部某个元素
+        组件内包含ref属性的标签元素的集合对象
+        给操作目标标签指定ref属性, 打一个标识
+        在组件内部获得标签对象: this.refs.refName(只是得到了标签元素对象)
+        作用: 找到组件内部的真实dom元素对象, 进而操作它
 
 # 参考学习链接
 * [菜鸟教程](https://www.runoob.com/react/react-install.html)
