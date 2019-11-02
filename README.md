@@ -1,11 +1,19 @@
 # React学习笔记
 ## 创建项目
+Mac:
 ```
 $ cnpm install -g create-react-app
 $ create-react-app my-app
 $ cd my-app/
 $ npm start
 ```
+Windows:
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
 效果图：
 ![](效果图/1.png)
 
