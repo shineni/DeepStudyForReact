@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1494fd3c-5714-43c3-acfa-1a4b596a8846" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/05_Component_Props/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/prop-types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04_Component_State/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/04_Component_State/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_JSX/ComponentIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/03_Component/ComponentIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06_Component_Refs_Events/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/06_Component_Refs_Events/test.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +44,9 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Study\GitHub\DeepStudyForReact\work\03_Component" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Study\GitHub\DeepStudyForReact\work\js" />
       <recent name="$PROJECT_DIR$/02_JSX" />
@@ -96,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572603707667</updated>
-      <workItem from="1572674483097" duration="6693000" />
+      <workItem from="1572674483097" duration="10000000" />
     </task>
     <servers />
   </component>
