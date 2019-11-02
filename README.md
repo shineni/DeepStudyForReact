@@ -34,7 +34,7 @@ npm start
 ```
 <script type="text/babel">
     //1.定义组件
-    //方式1：工厂函数组件(简单组件)
+    //方式1：工厂函数组件(简单组件：没有状态的组件)
     function MyComponent(){
         return <h2>工厂函数组件(简单组件)</h2>
     }
@@ -54,8 +54,18 @@ npm start
 #### 1.state
 * state是组件对象最重要的属性，值是对象(可以包含多个数据)
 * 组件被称为“状态机”，通过更新组件的state来更新对象页面显示(重新渲染组件)
+* 有状态就不能用简单组件方式，函数方式效率更高，不需要创建对象
 #### 2.props
+* 默认属性值
+Person.defaultProps={
+	name:'Mary'
+}
 
+* 对props中的属性值进行类型限制和必要性限制，要引入prop-types.js库
+Person.propTypes={
+	name:React.PropTypes.string.isRequired,
+    age:React.PropTypes.number.isRequired
+}
 #### 3.refs
 
 # 参考学习链接
