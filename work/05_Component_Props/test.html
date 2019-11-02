@@ -20,14 +20,27 @@
          */
 
         //1.定义组件
-        function Person(props){
-            return(
-                <ul>
-                    <li>姓名：{props.name}</li>
-                    <li>年龄：{props.age}</li>
-                    <li>性别：{props.sex}</li>
-                </ul>
-            )
+        // function Person(props){
+        //     return(
+        //         <ul>
+        //             <li>姓名：{props.name}</li>
+        //             <li>年龄：{props.age}</li>
+        //             <li>性别：{props.sex}</li>
+        //         </ul>
+        //     )
+        // }
+
+        class Person extends React.Component{
+            render(){
+                console.log(this)
+                return (
+                    <ul>
+                        <li>姓名：{this.props.name}</li>
+                        <li>年龄：{this.props.age}</li>
+                        <li>性别：{this.props.sex}</li>
+                    </ul>
+                )
+            }
         }
 
         //指定属性默认值
@@ -37,14 +50,13 @@
         }
 
         //指定属性值的类型和必要性
-        Person.propTypes={
-            name:React.PropTypes.string.isRequired,
-            age:React.PropTypes.number.isRequired
-        }
+        // Person.propTypes={
+        //     name:React.PropTypes.string.isRequired,
+        //     age:React.PropTypes.number.isRequired
+        // }
 
         //2.渲染组件标签
         const p1 = {
-            name:'Tom',
             name:'Tom',
             age:18,
             sex:'女'
@@ -52,8 +64,8 @@
         ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>,document.getElementById('test1'))
         /*
         ...的作用
-        1.打包
-        2.解包
+        1.打包 function fn(...as){} fun(1,2,3)
+        2.解包 const arr1 = {1,2,3} const arr2 ={6,...ar1,9}
          */
         ReactDOM.render(<Person {...p1}/>,document.getElementById("test3"))
         const p2={
