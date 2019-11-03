@@ -17,8 +17,12 @@
          2.输入文本，点击按钮显示到列表的首位，并清除输入的文本
           */
         /*
-        数据保存在哪个组件内？
-        看数据是某个组件需要(给它)，还是某些组件需要
+        问题1:数据保存在哪个组件内？
+            看数据是某个组件需要(给它)，还是某些组件需要
+        问题2:需要在子组件里改变父组件的状态
+            子组件不能直接改变父组件的状态
+            状态在哪个组件，更新状态的行为就应该定义在哪个组件
+            解决：父组件里面定义函数传递给子组件调用
          */
         class App extends React.Component{
 
@@ -28,14 +32,23 @@
                 this.state = {
                     todos:['吃饭','睡觉','打代码']   //设置数据
                 }
+                this.addTodo = this.addTodo.bind(this)
             }
 
-            render(){
+            addTodo (todo) {
+               // this.state.todos.unshift(todo) 不能这么做
+                const {todos} = this.state
+                todos.unshift(todo)
+                //更新状态
+                this.setState({todos})
+            }
+
+            render () {
                 const {todos} = this.state
                 return(
                     <div>
                         <h1>Simple TODO List</h1>
-                        <Add count = {todos.length}/>
+                        <Add count={todos.length} addTodo={this.addTodo}/>
                         <List todos={todos}/>
                     </div> //只能返回一个根标签
                 )
@@ -43,13 +56,28 @@
         }
         class Add extends React.Component{
 
-            add(){
-
+            constructor(props){
+                super(props)
+                this.add = this.add.bind(this)
             }
+
+            add(){
+                //1.读取输入的数据
+                const todo = this.todoInput.value.trim()
+                //2.检查合法性
+                if(!todo){
+                    return
+                }
+                //3.添加
+                this.props.addTodo(todo)
+                //4.清除输入
+                this.todoInput.value=''
+            }
+
             render(){
                 return(
                     <div>
-                        <input type="text"/>
+                        <input type="text" ref={input => this.todoInput=input}/>
                         <button onClick={this.add}>Add #{this.props.count + 1}</button>
                     </div>
                 )
@@ -57,15 +85,17 @@
         }
 
         Add.propTypes ={
-            count:PropTypes.number.isRequired
+            count: PropTypes.number.isRequired,
+            addTodo: PropTypes.func.isRequired
         }
+
         class List extends React.Component{
             render(){
                 const {todos} = this.props
                 return(
                     <ul>
                         {
-                            todos.map((todo,index)=><li key={index}>{todo}</li>)//数据数组转换为标签数组
+                            todos.map((todo,index)=>{return <li key={index}>{todo}</li>})//数据数组转换为标签数组
                         }
                     </ul>
                 )
