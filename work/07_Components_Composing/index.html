@@ -24,30 +24,40 @@
 
             constructor(props){
                 super(props)
+                //初始化状态
                 this.state = {
                     todos:['吃饭','睡觉','打代码']   //设置数据
                 }
             }
 
             render(){
+                const {todos} = this.state
                 return(
                     <div>
                         <h1>Simple TODO List</h1>
-                        <Add/>
-                        <List todos={this.state.todos}/>
+                        <Add count = {todos.length}/>
+                        <List todos={todos}/>
                     </div> //只能返回一个根标签
                 )
             }
         }
         class Add extends React.Component{
+
+            add(){
+
+            }
             render(){
                 return(
                     <div>
                         <input type="text"/>
-                        <button>Add #4</button>
+                        <button onClick={this.add}>Add #{this.props.count + 1}</button>
                     </div>
                 )
             }
+        }
+
+        Add.propTypes ={
+            count:PropTypes.number.isRequired
         }
         class List extends React.Component{
             render(){
