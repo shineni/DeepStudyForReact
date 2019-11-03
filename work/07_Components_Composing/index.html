@@ -11,7 +11,61 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
     <script type="text/javascript" src="../js/prop-types.js"></script>
     <script type="text/babel">
+        /*
+         需求：自定义组件，功能说明如下：
+         1.显示所有todo列表
+         2.输入文本，点击按钮显示到列表的首位，并清除输入的文本
+          */
+        /*
+        数据保存在哪个组件内？
+        看数据是某个组件需要(给它)，还是某些组件需要
+         */
+        class App extends React.Component{
 
+            constructor(props){
+                super(props)
+                this.state = {
+                    todos:['吃饭','睡觉','打代码']   //设置数据
+                }
+            }
+
+            render(){
+                return(
+                    <div>
+                        <h1>Simple TODO List</h1>
+                        <Add/>
+                        <List todos={this.state.todos}/>
+                    </div> //只能返回一个根标签
+                )
+            }
+        }
+        class Add extends React.Component{
+            render(){
+                return(
+                    <div>
+                        <input type="text"/>
+                        <button>Add #4</button>
+                    </div>
+                )
+            }
+        }
+        class List extends React.Component{
+            render(){
+                const {todos} = this.props
+                return(
+                    <ul>
+                        {
+                            todos.map((todo,index)=><li key={index}>{todo}</li>)//数据数组转换为标签数组
+                        }
+                    </ul>
+                )
+            }
+        }
+        //添加属性约束
+        List.propTypes ={
+            todos: PropTypes.array.isRequired
+        }
+        ReactDOM.render(<App />,document.getElementById("test1"))
     </script>
 </body>
 </html>
