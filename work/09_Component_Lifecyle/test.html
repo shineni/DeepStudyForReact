@@ -28,10 +28,10 @@
                 opacity:1
             };
 
-            this.distroyComponent = this.distroyComponent.bind(this)
+            this.destroyComponent = this.destroyComponent.bind(this)
         }
 
-        distroyComponent(){
+        destroyComponent(){
             ReactDOM.unmountComponentAtNode(document.getElementById('test1'))
         }
 
@@ -60,7 +60,7 @@
             return (
                 <div>
                     <h2 style={{opacity:opacity}}>{this.props.msg}</h2>
-                    <button onClick={this.distroyComponent}>不活了</button>
+                    <button onClick={this.destroyComponent}>不活了</button>
                 </div>
             )
         }
