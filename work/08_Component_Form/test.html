@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>表单</title>
+    <title>搜集表单数据</title>
 </head>
 <body>
     <div id="test1"></div>
@@ -25,25 +25,27 @@
                 this.state={
                     pwd:''
                 }
-                this.handleSubmit = this.handleSubmit.bind(this)
+                this.handleSubmit = this.handleSubmit.bind(this);
                 this.handleChange = this.handleChange.bind(this)
             }
 
             handleChange(event){
                 //读取输入的值
-                const pwd = event.target.value
+                const pwd = event.target.value;
                 //更新pwd的状态
                 this.setState({pwd})
             }
 
             handleSubmit(event){
-                const name = this.nameInput.value //类似const {name} = this.nameInput ES6语法
-                const {pwd} = this.state
-                alert(`准备提交的用户名为${name}，密码为${pwd}`) //注意：这里不是单引号，而是` 才能将变量打印出来
+                const name = this.nameInput.value; //类似const {name} = this.nameInput ES6语法
+                const {pwd} = this.state;
+                alert(`准备提交的用户名为${name}，密码为${pwd}`); //注意：这里不是单引号，而是` 才能将变量打印出来
 
                 event.preventDefault()  //阻止默认提交
             }
 
+            //用户名:非受控组件 react推荐不要过度使用refs 推荐使用受控组件 虽然麻烦一点
+            //密码：受控组件 更贴近与react思想
             render(){
                 return(
                     <form action="/test" onSubmit={this.handleSubmit}>

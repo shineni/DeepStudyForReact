@@ -104,6 +104,29 @@ Person.propTypes={
 * 受控组件：表单项输入数据能自动收集成状态
 * 非受控组件：需要时才手动读取表单输入框中的数据
 
+## 组件生命周期
+#### 效果图
+![](效果图/2.png)
+#### 生命周期详述
+* 第一次初始化渲染显示:ReactDOM.render()
+
+    constructor()：创建对象初始化state
+
+    componentWillMount()：将要插入回调
+
+    render()：用于插入虚拟DOM回调
+
+    componentDidMount()：已经插入回调
+
+* 每次更新 state：this.setState()
+    componentWillUpdate()：将要更新回调
+
+    render()：更新（重新渲染）
+
+    componentDidUpdate()：已经更新回调
+
+* 移除组件：ReactDOM.UNmountComponentAtNode(containerDom)
+	componentWillUnmount():组件将要被移除回调
 # 参考学习链接
 * [菜鸟教程](https://www.runoob.com/react/react-install.html)
 * [尚硅谷](https://www.bilibili.com/video/av51174155?from=search&seid=15105180625631138353)
