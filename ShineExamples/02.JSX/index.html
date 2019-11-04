@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>    
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript">
+        var message = "I like YOU"
+        const myId1 = "shineni"
+        //创建虚拟DOM ,渲染虚拟DOM
+
+       //React.createElement(tag名，标签属性，)
+        var vDOM1 = React.createElement('h1',{id:myId1.toLowerCase()},message.toUpperCase())            
+        ReactDOM.render(vDOM1,document.getElementById("test1"))
+       // ReactDOM.render(vDOM2, Document.getElementById("testt2"))
+
+    </script>
+    <script type="text/babel">
+        var message = "I like YOU"
+        const myId2 = "shineni"
+        //创建虚拟DOM ,渲染虚拟DOM                    
+        var vDOM2 = <h3 id={myId2.toUpperCase()}>{message.toLowerCase()}</h3>
+        ReactDOM.render(vDOM2, document.getElementById("test2"))
+
+    </script>
+
+</body>
+</html>

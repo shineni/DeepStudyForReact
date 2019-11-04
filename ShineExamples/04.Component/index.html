@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <div id="example2"></div>
+    <!--JS引入的顺序也很重要，显示react核心库，然后是操作DOM的react-dom,最后是Babel-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    //定义组件（3种方式）
+    //1.工厂函数组件（简单组件，返回一个虚拟DOM）直接调用方法
+        function  MyComponent() {
+            return <h2>工厂函数组件</h2>
+        }
+    //2. ES6类组件,即定义组件类（复杂组件）
+    //2.1 创建类的对象 
+    //2.2 调用类的方法render
+
+    //class 类名 extends React.Component   定义了组件的子类，组件有个特殊的方法render  React有个属性Component类
+        class MyComponent2 extends React.Component{
+            render(){
+                return <h3>ES6类组件（复杂组件)</h3>
+            }
+        }
+    //这段代码执行会发生什么,即一旦渲染会发生什么：
+    //1.创建类的实例对象
+    //2.调用类的render方法，得到虚拟DOM
+    //3.展示页面
+ 
+    //渲染组件
+        ReactDOM.render(<MyComponent/>, document.getElementById("example"))
+        ReactDOM.render(<MyComponent2/>, document.getElementById("example2"))
+    </script>
+</body>
+</html>
