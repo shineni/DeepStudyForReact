@@ -1,0 +1,4 @@
+step1: git pull
+step2: git add -A .
+step3: git commit -m "comment"
+step4: git push
