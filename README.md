@@ -99,6 +99,11 @@ Person.propTypes={
         在组件内部获得标签对象: this.refs.refName(只是得到了标签元素对象)
         作用: 找到组件内部的真实dom元素对象, 进而操作它
 
+## 搜集表单数据
+#### 表单包含的组件分裂
+* 受控组件：表单项输入数据能自动收集成状态
+* 非受控组件：需要时才手动读取表单输入框中的数据
+
 # 参考学习链接
 * [菜鸟教程](https://www.runoob.com/react/react-install.html)
 * [尚硅谷](https://www.bilibili.com/video/av51174155?from=search&seid=15105180625631138353)

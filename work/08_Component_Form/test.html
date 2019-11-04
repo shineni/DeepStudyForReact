@@ -11,7 +11,51 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
     <script type="text/javascript" src="../js/prop-types.js"></script>
     <script type="text/babel">
+        /*
+        需求：自定义包含表单的组件
+        1.界面如下所示
+        2.输入用户名密码后，点击登录提示输入信息
+        3.不提交表单
+         */
 
+        class LoginForm extends React.Component{
+
+            constructor(props){
+                super(props)
+                this.state={
+                    pwd:''
+                }
+                this.handleSubmit = this.handleSubmit.bind(this)
+                this.handleChange = this.handleChange.bind(this)
+            }
+
+            handleChange(event){
+                //读取输入的值
+                const pwd = event.target.value
+                //更新pwd的状态
+                this.setState({pwd})
+            }
+
+            handleSubmit(event){
+                const name = this.nameInput.value //类似const {name} = this.nameInput ES6语法
+                const {pwd} = this.state
+                alert(`准备提交的用户名为${name}，密码为${pwd}`) //注意：这里不是单引号，而是` 才能将变量打印出来
+
+                event.preventDefault()  //阻止默认提交
+            }
+
+            render(){
+                return(
+                    <form action="/test" onSubmit={this.handleSubmit}>
+                        用户名:<input type="text" ref={input=>this.nameInput=input}/>
+                        密 码:<input type="password" value={this.state.pwd} onChange={this.handleChange}/>
+                        <input type="submit" value="登录"/>
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<LoginForm/>,document.getElementById('test1'))
     </script>
 </body>
 </html>
