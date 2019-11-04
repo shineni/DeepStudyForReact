@@ -65,9 +65,9 @@ npm start
                 stateName2 : stateValue2
               }
             }
-        3. 读取显示: 
+        3. 读取显示:
             this.state.stateName1
-        4. 更新状态-->更新界面 : 
+        4. 更新状态-->更新界面 :
             this.setState({stateName1 : newValue})
 #### 2.props
 * 默认属性值
@@ -80,7 +80,6 @@ Person.propTypes={
 	name:React.PropTypes.string.isRequired,
     age:React.PropTypes.number.isRequired
 }
-
         所有组件标签的属性的集合对象
         给标签指定属性, 保存外部数据(可能是一个function)
         在组件内部读取属性: this.props.propertyName
@@ -106,3 +105,4 @@ Person.propTypes={
 * [中文官网](https://zh-hans.reactjs.org/)
 * [react-pxq开源项目](https://github.com/bailicangdu/react-pxq)
 * [react库 bootcnd](https://www.bootcdn.cn/react/)
+
