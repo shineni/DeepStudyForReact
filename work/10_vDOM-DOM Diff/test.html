@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vDOM-DOM Diff</title>
+</head>
+<body>
+    <div id="test1"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        /*
+        验证：
+        虚拟DOM+DOM Diff算法：最小化页面重绘
+         */
+        class HelloWrold extends React.Component{
+            constructor(props){
+                super(props)
+                this.state={
+                    date:new Date()
+                }
+            }
+
+            componentDidMount(){
+                setInterval(()=>{
+                    this.setState({
+                        date:new Date()
+                    })
+                },1000)
+            }
+
+            render(){
+                console.log('render()')
+                return(
+                    <p>
+                        Hello,<input type="text" placeholder="Your name here"/>!&nbsp;
+                        <span>It is {this.state.date.toTimeString()}</span>
+                    </p>
+                )
+            }
+        }
+        ReactDOM.render(<HelloWrold />,document.getElementById('test1'))
+    </script>
+</body>
+</html>

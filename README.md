@@ -127,6 +127,16 @@ Person.propTypes={
 
 * 移除组件：ReactDOM.UNmountComponentAtNode(containerDom)
 	componentWillUnmount():组件将要被移除回调
+
+## 重要的勾子
+* render();初始化渲染活更新渲染调用
+* componentDidMount();开启监听,发送ajax请求
+* componentWillUnmount();做一些收尾工作，如：清理定时器
+* componentWillReceiveProcess();
+
+## 虚拟DOM与DOM Diff算法
+
+
 # 参考学习链接
 * [菜鸟教程](https://www.runoob.com/react/react-install.html)
 * [尚硅谷](https://www.bilibili.com/video/av51174155?from=search&seid=15105180625631138353)
