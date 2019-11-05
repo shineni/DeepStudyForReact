@@ -8,17 +8,92 @@
 3. Learn once,write anywhere
 4. 高效 （从两个方面着手）
 	- 减少更新的次数：采用虚拟DOM,进行批量地更新
-    - 缩小更新的区域： DOM diff算法，最小化页面的重绘   
+    - 缩小更新的区域： DOM diff算法，最小化页面的重绘
 5. 单向数据流
 
 ### 1.3 React的涉及的库
-	react.js React 核心库
-    react-dom.js 用于操作虚拟dom
-    bable.min.js 1.将ES6翻译成ES5  2.可以翻译JSX的语法
-    
-    React编程思路：
-    1.创建虚拟DOM
-    2.将虚拟DOM 渲染到指定的节点上
+react.js React 核心库
+react-dom.js 提供操作DOM的react扩展库
+bable.min.js 1.将ES6翻译成ES5  2.解析JSX语法
+
+React编程思路：
+1.创建虚拟DOM(两种方式):
+- 方式一：纯js(一般不用) `React.createElement('h1',{id:'mytitle'},title)`
+- 方式二：JSX `<h1 id="title">{title}</h1>`
+
+2.将虚拟DOM 渲染到页面真实的容器DOM元素中： 语法: ` ReactDOM.render(virtualDOM（js或jsx创建的虚拟DOM元素）, containerDOM（包含虚拟DOM的真实DOM元素对象）)；`
+
+##2.React基本概念
+###2.1 JSX（JavaScript XML）
+####2.1.1 存在的背景
+用于创建react虚拟DOM元素对象
+####2.1.2 如何实现虚拟DOM元素的创建
+在JavaScript中写HTML标签或者自定义的组件标签，具体的语法规则如下：
+1.	遇到 <开头的代码, 以标签的语法解析: html同名标签转换为html同名元素, 其它标签需要特别解析
+2.	遇到以 { 开头的代码，以JS语法解析: 标签中的js代码必须用{ }包含
+
+####2.1.3 React怎样识别JSX(即babel.js的用途)
+1.	浏览器不能直接解析JSX代码, 需要babel转译为纯JS的代码才能运行
+2.	只要用了JSX，都要加上type="text/babel", 声明需要babel来处理
 
 
+###2.2 创建虚拟DOM的两种方式
+方式一：React提供的API实现：React.createElement(tag名，标签属性，内容)
+```
+ 		var message = "I like YOU"
+        const myId1 = "shineni"
+		//React.createElement(tag名，标签属性，内容)
+        var vDOM1 = React.createElement('h1',{id:myId1.toLowerCase()},message.toUpperCase())
+        ReactDOM.render(vDOM1,document.getElementById("test1"))
+```
+方式二：JSX方式
+```
+        var message = "I like YOU"
+        const myId2 = "shineni"
+        //创建虚拟DOM ,渲染虚拟DOM
+        var vDOM2 = <h3 id={myId2.toUpperCase()}>{message.toLowerCase()}</h3>
+        ReactDOM.render(vDOM2, document.getElementById("test2"))
+```
+**虚拟DOM和真实DOM的区别**
+- 虚拟DOM和真实DOM是一一对应的关系，只不过虚拟DOM比较轻（内容少），真实DOM比较重（内容多）
+- 虚拟DOM 最终在执行完render函数以后转换为真实的DOM
 
+**如何将数组转为标签的数组（map）**
+```
+<div id = "example"></div>
+<script type="text/babel">
+var names=['jquery','zepto','angular','react','vue']
+//创建虚拟DOM
+var vDOM=<ul>
+        {
+			names.map((name,index)=><li key={index}>{name}<li>)
+        }
+        </ul>
+//渲染DOM
+ReactDOM.render(vDOM,document.getElementById("example"))
+</script>
+```
+###2.3 模块与组件&&模块化与组件化
+#### 2.3.1 模块与组件
+	1. 模块:
+	  	理解: 向外提供特定功能的js程序, 一般就是一个js文件
+	  	为什么: js代码更多更复杂
+	  	作用: 复用js, 简化js的编写, 提高js运行效率
+	2. 组件:
+		理解: 用来实现特定功能效果的代码集合(html/css/js)
+	  	为什么: 一个界面的功能太复杂了
+	  	作用: 复用编码, 简化项目界面编码, 提高运行效率
+#### 2.3.2 模块化与组件化
+    1. 模块化:
+    	当应用的js都以模块来编写的, 这个应用就是一个模块化的应用
+    2. 组件化:
+    	当应用是以多组件的方式实现功能, 这上应用就是一个组件化的应用
+###2.4 组件化开发
+####2.4.1 创建组件类
+方式一：
+### 2.4.2 渲染组件标签
+
+## 3. React三要素
+###3.1 state
+###3.2 props
+###3.3 refs
