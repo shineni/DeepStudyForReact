@@ -136,6 +136,20 @@ Person.propTypes={
 
 ## 虚拟DOM与DOM Diff算法
 
+## 创建组件模板
+打开WebStorm->File->Setting->Editor->Live Templates,创建默认的模板代码。
+```
+import React, {Component} from 'react'
+export default class App extends Component{
+    render(){
+        return(
+            <div>
+            
+            </div>
+        )
+    }
+}
+```
 
 # 参考学习链接
 * [菜鸟教程](https://www.runoob.com/react/react-install.html)
