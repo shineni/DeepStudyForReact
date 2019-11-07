@@ -1,6 +1,6 @@
 # React学习笔记
 ## 1. React入门
-###1.1 React是什么
+### 1.1 React是什么
 		Facebook 开源的用于动态构建用户页面的js库。构建用户界面简而言之就是展示数据。
 ### 1.2 React的特点
 1. 声明式编码（传统的jquery库是命令式的函数库，用这些函数直接操做DOM节点）
@@ -12,9 +12,9 @@
 5. 单向数据流
 
 ### 1.3 React的涉及的库
-react.js React 核心库
-react-dom.js 提供操作DOM的react扩展库
-bable.min.js 1.将ES6翻译成ES5  2.解析JSX语法
+> react.js React 核心库
+> react-dom.js 提供操作DOM的react扩展库
+> bable.min.js 1.将ES6翻译成ES5  2.解析JSX语法
 
 React编程思路：
 1.创建虚拟DOM(两种方式):
@@ -23,21 +23,21 @@ React编程思路：
 
 2.将虚拟DOM 渲染到页面真实的容器DOM元素中： 语法: ` ReactDOM.render(virtualDOM（js或jsx创建的虚拟DOM元素）, containerDOM（包含虚拟DOM的真实DOM元素对象）)；`
 
-##2.React基本概念
-###2.1 JSX（JavaScript XML）
-####2.1.1 存在的背景
+## 2.React基本概念
+### 2.1 JSX（JavaScript XML）
+#### 2.1.1 存在的背景
 用于创建react虚拟DOM元素对象
-####2.1.2 如何实现虚拟DOM元素的创建
+#### 2.1.2 如何实现虚拟DOM元素的创建
 在JavaScript中写HTML标签或者自定义的组件标签，具体的语法规则如下：
 1.	遇到 <开头的代码, 以标签的语法解析: html同名标签转换为html同名元素, 其它标签需要特别解析
 2.	遇到以 { 开头的代码，以JS语法解析: 标签中的js代码必须用{ }包含
 
-####2.1.3 React怎样识别JSX(即babel.js的用途)
+#### 2.1.3 React怎样识别JSX(即babel.js的用途)
 1.	浏览器不能直接解析JSX代码, 需要babel转译为纯JS的代码才能运行
 2.	只要用了JSX，都要加上type="text/babel", 声明需要babel来处理
 
 
-###2.2 创建虚拟DOM的两种方式
+### 2.2 创建虚拟DOM的两种方式
 方式一：React提供的API实现：React.createElement(tag名，标签属性，内容)
 ```
  		var message = "I like YOU"
@@ -73,7 +73,7 @@ var vDOM=<ul>
 ReactDOM.render(vDOM,document.getElementById("example"))
 </script>
 ```
-###2.3 模块与组件&&模块化与组件化
+### 2.3 模块与组件&&模块化与组件化
 #### 2.3.1 模块与组件
 	1. 模块:
 	  	理解: 向外提供特定功能的js程序, 一般就是一个js文件
@@ -88,12 +88,37 @@ ReactDOM.render(vDOM,document.getElementById("example"))
     	当应用的js都以模块来编写的, 这个应用就是一个模块化的应用
     2. 组件化:
     	当应用是以多组件的方式实现功能, 这上应用就是一个组件化的应用
-###2.4 组件化开发
-####2.4.1 创建组件类
-方式一：
-### 2.4.2 渲染组件标签
+### 2.4 组件化开发
+#### 2.4.1 创建组件类
+方式一：工厂函数组件（简单组件，返回值是一个虚拟DOM）
+```
+	function MyComponent1(){
+    	return <h2>工厂函数组件</h2>
+    }
+```
+渲染组件时直接调用方法
+方式二： ES6类组件（复杂组件）
+```
+	class MyComponent2 extends React.Component{
+    	render(){
+        	return <h2>ES6组件（复杂组件）</h2>
+        }
+   }
+```
+渲染组件时会发生以下几件事情：
+1. 创建类的实例对象
+2. 执行类的render方法，得到虚拟DOM
+3. 将虚拟DOM 渲染到页面真实的容器DOM元素中，生成真实的DOM,再展示页面
 
+**说明**
+第二种方法的原理：
+- 自定义一个类继承自React的Component类
+- 类有构造函数（后面说）
+
+### 2.4.2 渲染组件标签
+`ReactDOM.render(<MyComponent/>, document.getElementById("example"))`
+`ReactDOM.render(<MyComponent2/>, document.getElementById("example2"))`
 ## 3. React三要素
-###3.1 state
-###3.2 props
-###3.3 refs
+### 3.1 state
+### 3.2 props
+### 3.3 refs
