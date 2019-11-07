@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="example" ></div>
+    <div id="example1" ></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascrit" src="../js/prop-types.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        /*
+        需求：自定一一个显示一个人员信息的组件,
+        1.姓名必须指定
+        2.如果性别没有指定，默认为男
+        3.如果年龄没有指定，默认为18  
+
+        姓名：Tom
+        性别：女
+        年龄：18
+
+        性别：Jack
+        性别：男
+        年龄：17    
+        */
+
+        /*
+        props:类似img标签，显示动态信息，需要标签将信息传过去
+        1.指定属性默认值
+            PersonInfo.defaultProps ={
+                name:"shine"
+            }
+        2.对props中的属性进行类型以及必要性的限制
+            PersonInfo.propTypes = {
+                name:PropTypes.string.isRequired;
+                age: PropTypes.number.isRequired;
+            }
+        3.扩展属性：将对象的所用属性通过props传递
+            {...p1}
+
+        */
+        const p1={name:"Tom",gender:"女"}
+        const p2={name:"Jack",age:17}
+        //工厂函数（函数怎么接受属性：传参,prop的类型是一个对象，state也是对象）
+        // function PersonInfo1(props) {
+        //     return (
+        //            <ul>
+        //                 <li>{props.name}</li>
+        //                 <li>{props.gender}</li>
+        //                 <li>{props.age}</li>
+        //            </ul>
+        //     )
+        // }
+
+        //定义组件类
+        class PersonInfo extends React.Component{
+            constructor(props){
+                super(props)
+            }
+           render(){
+               return (
+                   <ul>
+                        <li>{this.props.name}</li>
+                        <li>{this.props.gender}</li>
+                        <li>{this.props.age}</li>
+                   </ul>
+               )
+           }
+           
+        }
+        PersonInfo.defaultProps={
+                gender:"男",
+                age:18
+        }
+        PersonInfo.propTypes = {
+            name: ReactPropTypes.string.isRequired,
+            age: ReactPropTypes.number
+        }
+
+
+        //渲染组件
+        /*
+        ...的作用
+        1.打包 function fn(...as){} fun(1,2,3)
+        2.解包 const arr1 = {1,2,3} const arr2 ={6,...arr1,9}
+         */
+        ReactDOM.render(<PersonInfo1 name={p1.name} gender={p1.gender} age={p1.age}/>,document.getElementById("example"));
+        ReactDOM.render(<PersonInfo1 {...p2}/>,document.getElementById("example1"))
+    </script>
+</body>
+</html>
