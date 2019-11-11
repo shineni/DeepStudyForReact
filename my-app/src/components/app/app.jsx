@@ -4,6 +4,25 @@ import CommentAdd from "../comment-add/comment-add";
 import CommentList from "../comment-list/comment-list";
 
 export default class App extends Component{
+
+
+    // constructor(props){
+    //     super(props)
+    //     this.state={
+    //         comments:[
+    //             {username:'Tom',content:'React挺好的'},
+    //             {username:'Jack',content:'React太难了'},
+    //         ]
+    //     }
+    // }
+    //给组件对象添加state属性
+    state={
+        comments:[
+                    {username:'Tom',content:'React挺好的'},
+                    {username:'Jack',content:'React太难了'},
+                ]
+    }
+
     render(){
         return(
             <div>
