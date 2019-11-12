@@ -15,11 +15,13 @@ export default class CommentList extends Component{
     render(){
 
         const {comments,deleteComment} = this.props
-
+        //计算是否显示
+        const display = comments.length === 0 ? 'block':'none'
         return(
             <div className="col-md-8">
                 <h3 className="reply">评论回复:</h3>
                 <h2 style={{display:'none'}}>暂无评论，点击左侧添加评论！！！</h2>
+                <h2 style={{display}}>暂无评论，点击左侧添加评论！！！</h2>
                 <ul className="list-group">
                     {
                         comments.map((comment, index) => <CommentItem comment={comment} key={index} deleteComment={deleteComment} index={index}/>) //前面是属性参数comment 后面的comment是形参 数组类型必须有个key 官方要求 不然要警告
