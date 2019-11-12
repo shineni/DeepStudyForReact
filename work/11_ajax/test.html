@@ -38,7 +38,31 @@
                 const {name,html_url} = result.items[0]
                 //更新状态
                 this.setState({repoName:name,repoUrl:html_url})
+            }).catch((error)=>{
+                alert(error.message)
             })
+
+            //post请求
+            // axios.post('/user',{
+            //     firstName:'Fred',
+            //     lastName:'Flintstone'
+            // }).then(function(response){
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     console.log(error)
+            // })
+
+            //使用fetch发送异步请求
+            //https://github.github.io/fetch/
+            //https://segmentfault.com/a/1190000003810652
+            // fetch(url).then(response => {
+            //     return response.json()
+            // }).then(data=>{
+            //     //得到数据
+            //     const {name,html_url} = data.items[0]
+            //     //更新状态
+            //     this.setState({repoName:name,repoUrl:html_url})
+            // })
         }
 
         render(){
