@@ -5,7 +5,6 @@ import CommentList from "../comment-list/comment-list";
 
 export default class App extends Component{
 
-
     // constructor(props){
     //     super(props)
     //     this.state={
@@ -23,6 +22,13 @@ export default class App extends Component{
                 ]
     }
 
+    addComment = (comment) => {
+        const {comments} = this.state
+        comments.unshift(comment) //添加数组
+        //更新状态
+        this.setState({comments})
+    }
+
     render(){
         const {comments} = this.state
 
@@ -38,7 +44,7 @@ export default class App extends Component{
                  </div>
              </header>
              <div className="container">
-                <CommentAdd/>
+                <CommentAdd addComment={this.addComment}/>
                 <CommentList comments={comments}/>
              </div>
             </div>
