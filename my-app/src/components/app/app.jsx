@@ -24,6 +24,8 @@ export default class App extends Component{
     }
 
     render(){
+        const {comments} = this.state
+
         return(
             <div>
              <header className="site-header jumbotron">
@@ -37,7 +39,7 @@ export default class App extends Component{
              </header>
              <div className="container">
                 <CommentAdd/>
-                <CommentList/>
+                <CommentList comments={comments}/>
              </div>
             </div>
         )
