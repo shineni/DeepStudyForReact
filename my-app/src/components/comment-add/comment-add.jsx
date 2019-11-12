@@ -12,7 +12,7 @@ export default class CommentAdd extends Component{
         content: ''
     }
 
-    handleSubmit = () => {
+    handleSubmit = () => {  //箭头函数解决this的问题
         //收集数据,并封装成comment对象
         const comment = this.state
         //更新状态,数据在哪个组件，更新数据的行为就应该在哪个组件
