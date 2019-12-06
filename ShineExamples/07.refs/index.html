@@ -18,14 +18,55 @@
      2.点第二个输入框失去焦点时，提示这个输入框中的值
     */
 
+    /*
+    steps:
+        1.创建静态组件（UI） 写render
+        2.渲染组件 ReactDOM.render
+        3.交互（绑定事件）
+            3.1 定义事件，调用事件this.showInput
+            3.2 绑定this
+        4.refs: 用于标识组件内部的元素
+            4.1定义：
+                方案1， 给它一个标识：
+                <input type="text" ref="content"/> &nbsp; &nbsp;&nbsp;
+                官方建议方案2 ：
+                <input type="text" ref={input=>this.input=input}/> &nbsp; &nbsp;&nbsp;
+                ref里面是回调函数，回调函数在第一次渲染的时候就会被调用
+                            1)回调函数种的参数input指的是当前的inputDOM元素,
+                            2)this.input = input 讲当前的DOM元素绑定到组件对象上去
+            4.2 使用
+                方案1：this.refs.content 
+                方案2：this.input.value
+         5.事件调用
+            5.1 操作的元素不是当前发生事件的元素 showInput
+            5.2 操作的元素是当前发生事件的元素 handleBlur：所有的事件都有一个参数event, event.target指向当前元素
+    */
+
         //创建组件
         class Form extends React.Component{
+           constructor(props){
+               super(props)
+               this.showInput = this.showInput.bind(this);
+               this.handleBlur = this.handleBlur.bind(this);
+           }
+        //操作的元素不是当前发生事件的元素
+           showInput(){
+               //官方不建议使用
+                const input = this.refs.content;  //refs 取名为s的可能是数组也可能是对象，每个元素都可以有ref,有个标识，所以refs是对象
+               // alert(input.value);
+                alert(this.input.value)
+           }
+           //操作的DOM元素是当前发生事件的元素
+           handleBlur(event){
+                alert(event.target.value)
+           }
             render(){
                 return (
                     <div>
-                        <input type="text"/> &nbsp; &nbsp;&nbsp;
-                        <button></button>
-                        <input type="text"/> &nbsp; &nbsp;&nbsp;
+                        <input type="text" ref="content"/> &nbsp; &nbsp;&nbsp;
+                        <input type="text" ref={input=>this.input=input}/> &nbsp; &nbsp;&nbsp;
+                        <button onClick={this.showInput}>提示输入</button> &nbsp; &nbsp;&nbsp;
+                        <input type="text" placeholder="失去焦点提示内容" onBlur={this.handleBlur}/> &nbsp; &nbsp;&nbsp;
 
                     </div>
                 )
@@ -36,3 +77,4 @@
     </script>
 </body>
 </html>
+

@@ -47,15 +47,15 @@
         const p1={name:"Tom",gender:"女"}
         const p2={name:"Jack",age:17}
         //工厂函数（函数怎么接受属性：传参,prop的类型是一个对象，state也是对象）
-        // function PersonInfo1(props) {
-        //     return (
-        //            <ul>
-        //                 <li>{props.name}</li>
-        //                 <li>{props.gender}</li>
-        //                 <li>{props.age}</li>
-        //            </ul>
-        //     )
-        // }
+        function PersonInfo1(props) {
+            return (
+                   <ul>
+                        <li>{props.name}</li>
+                        <li>{props.gender}</li>
+                        <li>{props.age}</li>
+                   </ul>
+            )
+        }
 
         //定义组件类
         class PersonInfo extends React.Component{

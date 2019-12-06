@@ -120,5 +120,64 @@ ReactDOM.render(vDOM,document.getElementById("example"))
 `ReactDOM.render(<MyComponent2/>, document.getElementById("example2"))`
 ## 3. React三要素
 ### 3.1 state
-### 3.2 props
+React中并不是直接去操作DOM,它只需要操所数据，这个数据就是state, state是一个对象
+1. 初始化状态
+```
+    constructor(props){
+            super(props){
+                this.state={
+                    stateprop1:value1,
+                    stateprop2:value2
+                }
+            }
+    }
+```
+2. 状态的读取
+	`this.state.statePropertyName`
+3.  更新状态:setState()
+```
+	this.setState({
+    	stateProp1:newValue1,
+        statePorp2:newValue2
+    })
+```
+**[说明]**对于没有状态的组件一般用工厂函数组件，这是因为工厂函数组效率高，不会创建类的实例，只会直接调用函数，但是一旦有状态那么就需要用类组件
+```
+class Like extends React.Component{
+        constructor(props){ //constructor接受一个参数
+            super(props) //调用父类的构造函数
+            //初始化状态
+            this.state={
+                isLike:false
+            }
+            /*将新增的方法中的this强制绑定为组件对象，本质上执行的时候不再是handleClick函数，
+            而是通过bind绑定后产生的新的函数，只是新函数的函数题和handleClick是一样的，感觉好像是在执行handleClick函数一样*/
+            this.handleClick= this.handleClick.bind(this)
+        }
+
+        /*
+        handleClick是新增方法：内部的this默认不是组件对象，而是undefined
+        */
+        handleClick(){
+            //更新状态
+            const isLike = !this.state.isLike //ES6解构赋值
+            this.setState({isLike})
+        }
+        /*
+        render()是重写组件类的方法，也就是说本身就有该方法
+        */
+        render(){
+            //读取状态
+            const {isLike} = this.state;
+            return (
+                //做交互，绑定事件监听，this指向组件对象，只告诉它调用哪个方法，不能写（），也可以在这里绑定，但是效率低，每次渲染绑定一次，在构造函数中写只会执行一次
+                <h2 onClick={this.handleClick}>{isLike?"我喜欢你":"你喜欢我"}</h2>
+            )
+        }
+    }
+    //渲染组件
+    ReactDOM.render(<Like/>,document.getElementById("example"))
+```
+
+#### 3.2 props
 ### 3.3 refs
