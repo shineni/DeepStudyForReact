@@ -121,6 +121,7 @@ ReactDOM.render(vDOM,document.getElementById("example"))
 ## 3. React三要素
 ### 3.1 state
 React中并不是直接去操作DOM,它只需要操所数据，这个数据就是state, state是一个对象
+组件被称为“状态机”，通过更新对应的页面显示（重新渲染组件）
 1. 初始化状态
 ```
     constructor(props){
