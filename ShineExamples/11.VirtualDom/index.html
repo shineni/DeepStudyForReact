@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VirutalDOM </title>
+</head>
+<body>
+    <div id = "example"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <script type="text/babel">
+    /*
+    *******************************虚拟DOM和Diff算法*******************************
+    1.虚拟DOM的作用是，尽可能少地去操作DOM,这样更新页面的次数就变少了，
+        对于React而言基本不需要去更新真实的DOM,只需要更新虚拟DOM,怎样触发虚拟DOM的更新： 【更新状态】
+    2. Diff算法，判断哪些区域需要更新，哪些区域不需要更新，尽可能少地去更新区域
+    */
+    class VDOM extends React.Component{
+        constructor(props){
+            super(props)
+            this.state = {
+                date:new Date(),
+            }
+        }
+
+        componentDidMount(){
+            setInterval(() => {
+                this.setState({date:new Date()})
+            }, 1000);
+        }
+
+        render(){
+            const {date} = this.state
+            return (
+                <div>
+                    <p>
+                        <input type="text" placeholder="Your name here"/>
+                        <span>It is {date.toTimeString()}</span>
+                    </p>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<VDOM/>,document.getElementById("example"))
+    </script>
+    
+</body>
+</html>

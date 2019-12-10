@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Life Cycle</title>
+</head>
+<body>
+    <div id = "example"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    /*
+    ****************组件的生命周期**********************************
+    挂载：挂到页面中去
+    1.初始化显示的过程（生命周期回调函数【回调函数：你定义的你没有调用，但是最终执行了】）：
+        【constructor()-->componentWillMount()-->render()-->componentDidMount()】
+            a) constructor: 创建对象初始化state, 如果不用箭头函数的时候需要在这里绑定this
+            b) componentWillMount:将要插入回调
+            c) render:用于插入虚拟DOM回调
+            d) componentDidMount(): 已经插入回调
+
+            这些生命周期的函数，不写自己也会调用，只不过如果不写那么就不会出现自己想要的东西
+            声明式编程：填空题
+            命令式编程：自己定义好每一步，所有的都由你控制(Jquery)
+    2.每次更新state:this.setState 
+        【componentWillUpdate()-->render()-->componentDidUpdate()】
+            a)componentWillUpdate():将要更新的回调
+            b)render()：更新（重新渲染）
+            c)componentDidUpdate()：已经更新回调
+    3. 移除组件：ReactDOM.unmountComponentAtNode(containerDom)
+        【componentWillUnmount】组件将要移除的回调
+
+    *******************重要的生命周期勾子*******************************
+    1.render():初始化渲染或更新渲染调用
+    2.componentDidMount():开启监听，发送ajax请求
+    3.componentWillUnmount():做些收尾工作，清除定时器
+    4.componentWillReceiveProps():后面需要时讲
+    */
+        class LifeCycle extends React.Component{
+            constructor(props){
+                super(props)
+                this.state = {
+                    opacity:1
+                }
+                this.distoryComponent = this.distoryComponent.bind(this);
+            }
+
+            componentDidMount(){
+                //启动循环定时器
+                //定时器只需要启动一次就好了
+                /*
+                ***************定时器***********************
+                1.每个定时器都有一个对应的Id, setInterval返回的就是该Id
+                2.单位时毫秒
+                3.如果不使用箭头函数就需要手动绑定this
+                */
+                    this.IntervalId  = setInterval(() => {
+                    console.log("定时器执行")
+                    let {opacity} = this.state;
+                    opacity-=0.1;
+                    if(opacity<=0){
+                        opacity=1
+                    }
+                    this.setState({opacity})
+                }, 200);
+            }
+            
+            componentWillUnmount(){
+                //清理定时器
+                clearInterval(this.IntervalId)
+            }
+
+            distoryComponent(){
+                ReactDOM.unmountComponentAtNode(document.getElementById("example"))
+            }
+
+
+            render(){
+                const {opacity} = this.state
+                return (
+                    <div>
+                        <h1 style={{opacity:opacity}}>{this.props.msg}</h1>
+                        <button onClick={this.distoryComponent}>不活了</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<LifeCycle msg="react 学不会怎么办？"/>,document.getElementById("example"))
+
+    </script>
+
+</body>
+</html>
