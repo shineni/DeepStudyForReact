@@ -182,3 +182,78 @@ class Like extends React.Component{
 
 #### 3.2 props
 ### 3.3 refs
+## 4 脚手架
+目录：
+```
+my-app/
+  README.md
+  node_modules/
+  package.json
+  public/
+    index.html
+    favicon.ico
+  src/
+    App.css
+    App.js
+    App.test.js
+    index.css
+    index.js
+    logo.svg
+```
+1. node_modules 文件夹可以忽略，到时候可以直接安装
+2. package.json
+dependencies：运行时依赖
+devDependencies: 开发时依赖（编译打包的时候需要，运行的时候不需要）
+package.json 当前应用的描述文件，描述当前项目相关信息的文件，包指的时当前应用（一个文件夹怎么能称为一个应用或者称为包：有专门的包描述信息文件package.json）
+	重要方面：
+    1.当前应用的标识 name（不变）, version(变)
+    2.当前应用的依赖（dependencies,devDependencies）
+   3.当前应用如何运行打包(scripts脚本，这些命令通过npm run运行)
+3. ReadMe:应用的说明文件
+```
+{
+  "name": "react_blank",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+一个webpack 应用一般都会有一个入口JS文件，入口的名字通过webpack去配置，一般有两个一个是index.js,一个叫main.js
+
+SPA： Single Page Application单页面应用
+所用的class-->className
+
+npm install -g create-react-app
+create-react-app hello-react
+cd hello-react
+npm start  //完整命令是npm run start 但是run可以省略 start是来源于package.json中的scripts， build 生成打包文件
+
+
+全局下载包：所有应用都能看到：npm install -g create-react-app
+查询全局的下载根目录:  npm root -g 
+   C:\Users\sni019\AppData\Roaming\npm\node_modules
+create-react-app react_app 命令中的前一段create-react-app是和全局下载的包的名字一样，然后加要指定的项目的名称
+【打开指定目录的控制台的两个方式】
+1.在File Folder中定位到目标目录，然后敲入cmd
+2.在指定的目标目录， shift+鼠标右键 选择powershell
+- 下载对应的应用以及依赖的模块
+
+自己创建项目的步骤：
+1. 创建入口文件 index.js
+2. 所有组件都可以放到一个文件夹中components,【组件命名规律：文件名小写，组件名大写，组件的后缀名用jsx便于区分是一般模块还是组件模块，不过组件后缀名也可以用js】
+//脚手架会自动打包编译，热更新
+
+
+
