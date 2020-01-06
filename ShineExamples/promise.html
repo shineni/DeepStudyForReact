@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+</head>
+<body>
+    <div id = "example"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript">
+//promise 异步解决方案,更易于维护
+//以前：事件监听或者回调函数（缺点可能嵌套比较多）
+
+//**********回调函数:耗时1秒，1秒完成以后就会调用回调函数cd**************
+        //  function func(cb){
+        //      setTimeout(() => {
+        //         cb && cb()
+                 
+        //      }, 1000);
+        //  }
+        //  func(()=>{
+        //      console.log(1);
+        //      func(()=>{
+        //          console.log(2)
+        //          func(()=>{
+        //              console.log(3)
+        //          })
+        //      })
+        //      })
+
+//**********Promise函数:耗时1秒，1秒完成以后就会调用回调函数cd**************
+/*
+1.func2返回一个Promise对象，该对象有.then方法, 1s后执行resolve（）方法 .catch捕捉错误
+2.接受两个参数resolve和reject
+3. promise的方法 promise.all
+
+*/
+        // function func2(){
+        //     return new Promise((resolve,reject)=>{
+        //         setTimeout(() => {
+        //             resolve()
+        //         }, 1000);
+        //     })
+        // }
+        // func2().then(()=>{
+        //     console.log(2)
+        //     return func2(); //返回promise，又有.then方法
+        // })
+        // .then(()=>{
+        //     console.log(3)
+        //     return func2();
+        // })
+        // .then(()=>{
+        //     console.log(4)
+        //     return func2();
+        // })
+
+        //async await 在遇到yield的时候会停止，知道遇到下一个Next()才会触发
+        //async和await就是genertor函数的语法糖,捕捉错误try catch
+        // function* a(v){
+        //     yield console.log(v+1)
+        //     yield console.log(v+2)
+        // }
+
+        // const b = a(5)
+        // setInterval(()=>{
+        //     b.next()
+        // },2000)
+
+
+        async function a(v){
+            await console.log(v+1)
+            
+        }
+        const b = a(5)
+        setInterval(()=>{
+            b.next()
+        },2000)
+
+    </script>
+</body>
+</html>

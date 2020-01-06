@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event</title>
+</head>
+<body>
+    <!-- <div id="s1">s1
+        <div id="s2">
+            s2
+        </div>
+    </div>
+    <script type="text/javascript">
+    s1.addEventListener("click",(e)=>{console.log("s1冒泡事件")},false)
+    s2.addEventListener("click",(e)=>{console.log("s2冒泡事件")},false)
+    </script> -->
+
+    <div id="s1">s1
+        <div id="s2">s2</div>
+    </div>
+    <script>
+    s1.addEventListener("click",function(e){
+            console.log("s1 冒泡事件");         
+    },false);
+    s2.addEventListener("click",function(e){
+            console.log("s2 冒泡事件");
+    },false);
+            
+    s1.addEventListener("click",function(e){
+            console.log("s1 捕获事件");
+    },true);
+            
+    s2.addEventListener("click",function(e){
+            console.log("s2 捕获事件");
+    },true);
+    </script>
+</body>
+</html>

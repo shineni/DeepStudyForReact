@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Agent</title>
+</head>
+<body>
+    <ul id="color-list">
+        <li>red</li>
+        <li>yellow</li>
+        <li>blue</li>
+        <li>green</li>
+        <li>black</li>
+        <li>white</li>
+    </ul>
+    <script type="text/javascript">
+    //传统做法：遍历
+    // (function(){
+    //     var color_list = document.getElementById("color-list")
+    //     var colors = color_list.getElementsByTagName("li")
+    //     console.log("color-list"+color_list)
+    //     console.log("colors"+colors)
+    //     for(var i =0;i<colors.length;i++){
+    //         colors[i].addEventListener("click",showColor,false);
+    //     }           
+       
+    //     function showColor(e){
+    //         var x = e.target;
+    //         console.log("target"+x);
+    //         console.log("The color is "+ x.innerHTML)
+    //     }
+    // })();
+
+    //事件代理
+    (function(){
+        var color_list = document.getElementById("color-list")
+        color_list.addEventListener("click",showColor,false)
+        function showColor(e){
+            var x= e.target
+            if(x.nodeName.toLowerCase()==="li"){
+                console.log("The color is "+ x.innerHTML)
+            }
+        }
+
+    })();
+
+    </script>
+    
+</body>
+</html>
