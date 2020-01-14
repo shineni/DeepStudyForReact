@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    ****************水平居中************
+    块级元素
+        1. margin法
+            三要素：块级元素，定宽，margin-left和margin-right设置为 auto
+        2.定位法
+            五要素：父元素相对定位，该元素定宽，该元素绝对定位，该设置left:50%, 元素负左边距为宽度的一半
+    行内元素：
+        1.文字： text-align:center
+
+    CSS3实现：
+
+
+     ****************垂直居中************
+    块级元素
+        1. margin法
+            三要素：块级元素，定宽，margin-left和margin-right设置为 auto
+        2.定位法
+            五要素：父元素相对定位，该元素定宽，该元素绝对定位，该设置top:50%, 元素负上边距为宽度的一半
+    行内元素：
+        1.两要素：单行且高度固定不变，line-height:heigt
+-->
+<style type="text/css">
+.md-warp{
+    width: 400px;
+    height: 300px;
+    max-width: 100%;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.md-main{
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: #f00;  
+}
+
+/* 定位法
+.md-main{
+    position: absolute;
+    display: block;
+    width: 100px;
+    height: 100px;
+    left:50%;
+    margin-left:-50px;
+    background: #f00;
+  
+} */
+
+/* 
+margin法
+.md-main{
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: #f00;
+    margin:auto;
+} */
+
+/* 
+text-align:center;
+.md-warp{
+    width: 400px;
+    height: 300px;
+    max-width: 100%;
+    border: 1px solid #000;
+    text-align: center;
+} */
+</style>
+
+<body >
+        <div class="md-warp">
+        <span class="md-main">12444</span>
+    </div>
+
+    
+</body>
+</html>

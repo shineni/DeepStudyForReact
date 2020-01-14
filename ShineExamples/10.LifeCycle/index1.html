@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Life Cycle</title>
+</head>
+<body>
+    <div id = "example"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    
+        class LifeCycle extends React.Component{
+            constructor(props){
+                super(props)
+                this.state = {
+                    name:"shine"
+                }
+            }
+            componentWillMount(){
+                // let name = "shine1"
+                // this.setState({name})
+                const {name} = this.state
+                console.log("componentWillMount"+name)
+            }
+
+            componentDidMount(){
+                let name = "shine1"
+               this.setState({name})
+                console.log("componentDidMount"+name)
+            
+            }
+            componentWillReceiveProps(nextProps, prevState){
+                // let name = "shine1"
+                // this.setState({name})
+                const {name} = this.state
+                console.log("componentWillReceiveProps"+name)
+                console.log(nextProps,prevState)
+                
+                
+            }
+            shouldComponentUpdate(nextProps, nextState){
+                // let name = "shine1"
+                // this.setState({name})
+                console.log(`shouldComponentUpdate ${nextProps} ${nextState}`)
+                return true
+            }
+            ComponentWillUpdate(){
+                // let name = "shine1"
+                // this.setState({name})
+               const {name} = this.state
+                console.log("ComponentWillUpdate"+name)
+                
+            }
+
+            ComponentDidUpdate(nextProps){
+                // let name = "shine1"
+                // this.setState({name})
+               const {name} = this.state
+                console.log("componentWillReceiveProps"+name)
+                
+            }
+            
+            componentWillUnmount(){
+                const {name} = this.state
+                console.log("componentWillUnmount"+name) 
+            }
+
+            handleClick=()=>{
+                this.setState({name:"ShineShine"})
+            }
+
+            render(){
+                const {name} = this.state
+                console.log("render"+name)
+                
+                return (
+                    <div>
+                        <h1 onClick={this.handleClick}>{name}</h1>
+                        <Child name={name}></Child>
+                    </div>
+                )
+            }
+        }
+
+        class Child extends React.Component{
+            constructor(props){
+                super()
+                this.state={childName:"Aladd"}
+            }
+
+            componentWillMount(){
+                // let name = "shine1"
+                // this.setState({name})
+                const {name} = this.props
+                const {childName} = this.state
+                console.log("Child-componentWillMount fathername"+name+"childname"+childName)
+            }
+
+            componentDidMount(){
+                //const {childName} = this.state
+                const {name} = this.props
+                let childName = "Aladd1"
+                this.setState({childName})
+                console.log("Child-componentDidMount fathername"+name+"childname"+childName)
+            
+            }
+            componentWillReceiveProps(nextProps){
+                // let name = "shine1"
+                // this.setState({name})
+         
+                console.log("Child-componentWillReceiveProps nextProps"+nextProps.name)
+                
+                
+                
+                
+            }
+            shouldComponentUpdate(nextProps, nextState){
+                // let name = "shine1"
+                // this.setState({name})
+                const {name} = this.props
+                const {childName} = this.state
+                console.log("Child-shouldComponentUpdate nextProps "+nextProps.name+"nextState "+nextState.childName)
+                return true
+            }
+            ComponentWillUpdate(){
+                // let name = "shine1"
+                // this.setState({name})
+               const {name} = this.props
+               const {childName} = this.state
+                console.log("Child-ComponentWillUpdate fathername"+name+"childname"+childName)
+                
+            }
+
+            ComponentDidUpdate(){
+                // let name = "shine1"
+                // this.setState({name})
+               const {name} = this.props
+               const {childName} = this.state
+               console.log("Child-ComponentWillUpdate fathername"+name+"childname"+childName)
+                
+            }
+            
+            componentWillUnmount(){
+                const {name} = this.props
+                console.log("Child-componentWillUnmount"+name) 
+            }
+
+            render(){
+                console.log("render child")
+                return (<h2>Father name {this.props.name} && Child Name {this.state.childName}</h2>)
+            }
+        }
+
+        ReactDOM.render(<LifeCycle />,document.getElementById("example"))
+
+    </script>
+
+</body>
+</html>
